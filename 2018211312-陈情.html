@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+ <html >
+      <title>redrock</title>
+      <meta charset="utf-8">
+      <head>
+  
+  	
+  	
+  	 <script type="text/javascript"></script>
+  	
+     <input type="button"  value="放大" 
+    onclick="document.getElementById('div1');
+    div1.style.width='500px';
+    div1.style.height='500px';"/>
+  	
+
+
+  	<input type="button"  value="缩小" 
+  	onclick="document.getElementById('div1');
+  	div1.style.width='100px';
+  	div1.style.height='100px';"/>
+
+  	
+        <input type="button" value="上"
+        onclick="document.getElementById('div1');
+        div1.style.top='50px';
+        div1.style.left='500px';"/ >
+
+        <input type="button" value="下" 
+        onclick="document.getElementById('div1');
+        div1.style.top='500px';
+        div1.style.left='500px';"/>
+
+        <input type="button" value="左" 
+        onclick="document.getElementById('div1');
+        div1.style.top='500px';
+        div1.style.left='50px';"/>
+ 
+         <input type="button" value="右"
+        onclick="document.getElementById('div1');
+        div1.style.top='500px';
+        div1.style.left='800px';"/ > 
+   
+
+    <style type="text/css">
+
+    #div1{
+   background-color: pink;
+  width:250px;
+  height:250px;
+  border-width:1px;
+  top:250px;
+  left:500px;
+  position: absolute;
+  transition: all 0.5s;
+  -moz-transition:all 0.5s;
+  -webkit-transition:all 0.5s;
+  -o-transition:all 0.5s;
+
+} 
+  </style>
+
+
+
+ <script type="text/javascript">
+  window.onscroll = function(){ 
+    var t = document.documentElement.scrollTop || document.body.scrollTop; 
+    var top = document.getElementById( "back2" ); 
+    if( t >= 1000 ) { 
+    top.style.display = "inline"; 
+       } else { 
+    top.style.display = "none"; 
+     } 
+ } 
+        
+
+             var targetsite=0;
+            var topsite = 0; 
+           var time=null;
+
+
+    function back () {
+                   clearInterval(time);
+                    topsite=document.documentElement.scrollTop || document.body.scrollTop;  
+                    time = setInterval(function () {
+                    var step=(targetsite-topsite)/5;
+                    step = step>0?Math.ceil(step):Math.floor(step);
+                    topsite=topsite+step;
+                    window.scrollTo(0,topsite);  
+                 if(topsite===0){
+                      clearInterval(time);
+
+                    }
+
+                },30);
+
+            }
+
+  
+
+</script>
+</head>
+<body style="height: 8000px;">
+  <div id="div1"></div>
+<button onclick="back()" id="back2" style="position:fixed;right: 20px;bottom:20px;width:100px;height:100px;font:10px "宋体";">返回顶部</button>
+ 
+ </body>
+ </html> 
